@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id="myBeforeAdvice" class="com.spring.hello.MyBeforeAdvice"/>
+
+    <aop:config>
+        <aop:aspect id="before" ref="myBeforeAdvice">
+            <aop:pointcut id="myPointCut" expression="execution(* com.spring.hello.*.*(..))"/>
+            <aop:before method="beforeMethod" pointcut-ref="myPointCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
